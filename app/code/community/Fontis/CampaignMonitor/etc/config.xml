@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!--
+<?xml version="1.0"?><!--
 /**
  * Fontis Campaign Monitor Extension
  *
@@ -23,61 +22,61 @@
 -->
 <config>
 
-  <modules>
-    <Fontis_CampaignMonitor>
-      <version>0.6</version>
-    </Fontis_CampaignMonitor>
-  </modules>
+    <modules>
+        <Fontis_CampaignMonitor>
+            <version>0.6</version>
+        </Fontis_CampaignMonitor>
+    </modules>
 
-  <global>
-    <models>
-      <campaignmonitor>
-        <class>Fontis_CampaignMonitor_Model</class>
-      </campaignmonitor>
-    </models>
-    
-    <events>
-      <customer_save_before>
-        <observers>
-          <fontis_campaignmonitor_observer>
-            <type>singleton</type>
-            <class>campaignmonitor/customer_observer</class>
-            <method>check_subscription_status</method>
-          </fontis_campaignmonitor_observer>
-        </observers>
-      </customer_save_before>     
-      <customer_delete_before>
-        <observers>
-          <fontis_campaignmonitor_observer_2>
-            <type>singleton</type>
-            <class>campaignmonitor/customer_observer</class>
-            <method>customer_deleted</method>
-          </fontis_campaignmonitor_observer_2>
-        </observers>
-      </customer_delete_before>     
-    </events>
+    <global>
+        <models>
+            <campaignmonitor>
+                <class>Fontis_CampaignMonitor_Model</class>
+            </campaignmonitor>
+        </models>
 
-    <rewrite>
-      <fontis_campaignmonitor_new>
-        <from><![CDATA[#^/newsletter/subscriber#]]></from>
-        <to>/campaignmonitor/hook</to>
-      </fontis_campaignmonitor_new>
-      <fontis_campaignmonitor_admin>
-        <from><![CDATA[#^/admin/newsletter_subscriber/massUnsubscribe#]]></from>
-        <to>/campaignmonitor/adminhook</to>
-      </fontis_campaignmonitor_admin>
-    </rewrite>
-  </global>
-  
-  <frontend>
-    <routers>
-      <campaignmonitor>
-        <use>standard</use>
-          <args>
-            <module>Fontis_CampaignMonitor</module>
-            <frontName>campaignmonitor</frontName>
-          </args>
-      </campaignmonitor>
-    </routers>
-  </frontend>
+        <events>
+            <customer_save_before>
+                <observers>
+                    <fontis_campaignmonitor_observer>
+                        <type>singleton</type>
+                        <class>campaignmonitor/customer_observer</class>
+                        <method>check_subscription_status</method>
+                    </fontis_campaignmonitor_observer>
+                </observers>
+            </customer_save_before>
+            <customer_delete_before>
+                <observers>
+                    <fontis_campaignmonitor_observer_2>
+                        <type>singleton</type>
+                        <class>campaignmonitor/customer_observer</class>
+                        <method>customer_deleted</method>
+                    </fontis_campaignmonitor_observer_2>
+                </observers>
+            </customer_delete_before>
+        </events>
+
+        <rewrite>
+            <fontis_campaignmonitor_new>
+                <from><![CDATA[#^/newsletter/subscriber#]]></from>
+                <to>/campaignmonitor/hook</to>
+            </fontis_campaignmonitor_new>
+            <fontis_campaignmonitor_admin>
+                <from><![CDATA[#^/admin/newsletter_subscriber/massUnsubscribe#]]></from>
+                <to>/campaignmonitor/adminhook</to>
+            </fontis_campaignmonitor_admin>
+        </rewrite>
+    </global>
+
+    <frontend>
+        <routers>
+            <campaignmonitor>
+                <use>standard</use>
+                <args>
+                    <module>Fontis_CampaignMonitor</module>
+                    <frontName>campaignmonitor</frontName>
+                </args>
+            </campaignmonitor>
+        </routers>
+    </frontend>
 </config>
