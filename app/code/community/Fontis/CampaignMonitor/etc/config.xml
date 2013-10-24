@@ -29,6 +29,16 @@
     </modules>
 
     <global>
+        <helpers>
+            <campaignmonitor>
+                <class>Fontis_CampaignMonitor_Helper</class>
+            </campaignmonitor>
+        </helpers>
+        <blocks>
+            <campaignmonitor>
+                <class>Fontis_CampaignMonitor_Block</class>
+            </campaignmonitor>
+        </blocks>
         <models>
             <campaignmonitor>
                 <class>Fontis_CampaignMonitor_Model</class>
@@ -68,15 +78,27 @@
         </rewrite>
     </global>
 
-    <frontend>
+    <admin>
         <routers>
-            <campaignmonitor>
-                <use>standard</use>
+            <adminhtml>
                 <args>
-                    <module>Fontis_CampaignMonitor</module>
-                    <frontName>campaignmonitor</frontName>
+                    <modules>
+                        <fontis_campaignmonitor before="Mage_Adminhtml">Fontis_CampaignMonitor_Adminhtml</fontis_campaignmonitor>
+                    </modules>
                 </args>
-            </campaignmonitor>
+            </adminhtml>
         </routers>
-    </frontend>
+    </admin>
+
+    <!--<frontend>-->
+        <!--<routers>-->
+            <!--<campaignmonitor>-->
+                <!--<use>standard</use>-->
+                <!--<args>-->
+                    <!--<module>Fontis_CampaignMonitor</module>-->
+                    <!--<frontName>campaignmonitor</frontName>-->
+                <!--</args>-->
+            <!--</campaignmonitor>-->
+        <!--</routers>-->
+    <!--</frontend>-->
 </config>
